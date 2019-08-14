@@ -22,28 +22,29 @@ public class loginStepDef {
 
     @Given("^I set user name with \"([^\"]*)\"$")
     public void i_set_user_name_with(String username) throws Throwable {
-        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("logina")).sendKeys(username);
     }
 
     @Given("^I set password with \"([^\"]*)\"$")
     public void i_set_password_with(String password) throws Throwable {
-        driver.findElement(By.id("password")).sendKeys(password);
+        driver.findElement(By.id("clavea")).sendKeys(password);
     }
 
     @Then("^I click on login button$")
     public void i_click_on_login_button() throws Throwable {
-        driver.findElement(By.xpath("//input[@class='btn btn-primary btn-block']")).click();
+
+        driver.findElement(By.xpath("//*[@id=\"frmAcceso\"]/div[3]/div[2]/button")).click();
     }
 
     @Then("^I should see \"([^\"]*)\" message$")
     public void i_should_see_message(String expectedMesage) throws Throwable {
-        String message = driver.findElement(By.xpath("//div[@class='alert alert-danger']")).getText();
+        String message = driver.findElement(By.xpath("/html/body/div/header/a/span[2]")).getText();
         Assert.assertTrue(message.contains(expectedMesage));
     }
 
     @Then("^I should see \"([^\"]*)\" header$")
     public void i_should_see_header(String expectedHeader) throws Throwable {
-        String header = driver.findElement(By.xpath("//a[@class='brand']")).getText();
+        String header = driver.findElement(By.xpath("/html/body/div/div[2]/p")).getText();
         Assert.assertTrue(header.contains(expectedHeader));
     }
 
